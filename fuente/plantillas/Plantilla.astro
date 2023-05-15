@@ -1,0 +1,46 @@
+---
+export interface Props {
+  titulo?: string;
+}
+
+const { titulo } = Astro.props;
+const cola = '..:: EnFlujo ::..';
+const tituloPagina = titulo ? `${titulo} | ${cola}` : `Ambages | ${cola}`;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{tituloPagina}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global lang="scss">
+  :root {
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: #f6f6f6;
+  }
+
+  code {
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+      monospace;
+  }
+
+  ul {
+    list-style: none;
+  }
+</style>

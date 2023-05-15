@@ -1,0 +1,24 @@
+---
+export interface Props {
+  titulo: string;
+  ruta: string;
+  descripcion: string;
+}
+
+const { titulo, ruta, descripcion } = Astro.props;
+---
+
+<li class="ambage">
+  <a href={ruta}>
+    <h2>{titulo}</h2>
+    <p>{descripcion}</p>
+  </a>
+</li>
+
+<style lang="scss">
+  .ambage {
+    width: 33%;
+    background-color: rgb(228, 234, 239);
+    padding: 1em;
+  }
+</style>

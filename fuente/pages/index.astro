@@ -1,0 +1,29 @@
+---
+import Plantilla from '../plantillas/Plantilla.astro';
+import Ambage from '../componentes/Ambage.astro';
+---
+
+<Plantilla>
+  <main>
+    <h1>Ambages</h1>
+
+    <ul role="list" class="galeriaAmbages">
+      <Ambage ruta="/prueba" titulo="Primer Gesto" descripcion="Un breve poema." />
+    </ul>
+  </main>
+</Plantilla>
+
+<style lang="scss">
+  h1 {
+    font-size: 6em;
+    font-family: Dejavu Sans, Arial, Verdana, sans-serif;
+    margin: -0.3em 0 1em -0.1em;
+    color: #5757f7;
+    letter-spacing: 1em;
+  }
+
+  .galeriaAmbages {
+    width: 80vw;
+    text-align: center;
+  }
+</style>
