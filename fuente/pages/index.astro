@@ -5,7 +5,7 @@ import Ambage from '../componentes/Ambage.astro';
 
 <Plantilla>
   <main>
-    <h1>Ambages</h1>
+    <h1 id="titulo" class="deslizar">Ambages</h1>
 
     <ul role="list" class="galeriaAmbages">
       <Ambage ruta="/prueba" titulo="Primer Gesto" descripcion="Un breve poema." />
@@ -13,13 +13,56 @@ import Ambage from '../componentes/Ambage.astro';
   </main>
 </Plantilla>
 
+<script>
+  const titulo = document.getElementById('titulo'); //document.querySelector('.deslizar');
+  let ratonPresionado = false;
+  let comienzoX;
+  let deslizarIzquierdo;
+
+  titulo.addEventListener('mousedown', (e) => {
+    ratonPresionado = true;
+    titulo.classList.add('activo');
+    comienzoX = e.pageX - titulo.offsetLeft;
+    deslizarIzquierdo = titulo.scrollLeft;
+  });
+  titulo.addEventListener('mouseleave', () => {
+    ratonPresionado = false;
+    titulo.classList.remove('activo');
+  });
+  titulo.addEventListener('mouseup', () => {
+    ratonPresionado = false;
+    titulo.classList.remove('activo');
+  });
+  titulo.addEventListener('mousemove', (e) => {
+    if (!ratonPresionado) return;
+    e.preventDefault();
+    const x = e.pageX - titulo.offsetLeft;
+    const paso = (x - comienzoX) * 3;
+    titulo.scrollLeft = deslizarIzquierdo - paso;
+  });
+</script>
+
 <style lang="scss">
-  h1 {
-    font-size: 6em;
+  #titulo {
+    font-size: 20em;
     font-family: Dejavu Sans, Arial, Verdana, sans-serif;
-    margin: -0.3em 0 1em -0.1em;
+    margin: -0.3em 0 0.4em -0.1em;
     color: #5757f7;
     letter-spacing: 1em;
+    overflow-x: hidden;
+    transition: all 0.2s;
+    cursor: grab;
+
+    &:hover {
+      margin-left: -0.3em;
+    }
+
+    &.activo {
+      background: rgba(255, 255, 255, 0.3);
+      cursor: grabbing;
+      cursor: -webkit-grabbing;
+      transform: scale(1);
+    }
   }
 
   .galeriaAmbages {
