@@ -5,16 +5,7 @@ import Ambage from '../componentes/Ambage.astro';
 
 <Plantilla>
   <main>
-    <h1 id="titulo" class="deslizar">Ambages</h1>
-
-    <ul role="list" class="galeriaAmbages">
-      <Ambage ruta="/revelarpoema" titulo="Primer gesto: revelar" descripcion="Un poema, raspar con el dedo." />
-      <Ambage
-        ruta="/transparentartexto"
-        titulo="Segundo gesto: transparentar"
-        descripcion="Transparentar y expandir o estirar."
-      />
-    </ul>
+    <h1 id="titulo"><span class="transparencia">Ambages</span></h1>
   </main>
 </Plantilla>
 
@@ -48,18 +39,24 @@ import Ambage from '../componentes/Ambage.astro';
 </script>
 
 <style lang="scss">
+  main {
+    background-image: url(https://static.vecteezy.com/system/resources/previews/000/530/877/original/vector-abstract-seamless-pattern-geometric-form-watercolor-background.jpg);
+    height: 100vh;
+  }
+
   #titulo {
-    font-size: 20em;
+    font-size: 15em;
     font-family: Dejavu Sans, Arial, Verdana, sans-serif;
-    margin: -0.3em 0 0.4em -0.1em;
-    color: #5757f7;
-    letter-spacing: 1em;
+    margin: 0 auto;
+    background-color: #ffffff;
     overflow-x: hidden;
-    transition: all 0.2s;
+    transition: all 1.5s;
     cursor: grab;
+    transform: translate(0px, 0.7em);
 
     &:hover {
-      margin-left: -0.3em;
+      transition: all 1.5s;
+      letter-spacing: 0.4em;
     }
 
     &.activo {
@@ -70,8 +67,12 @@ import Ambage from '../componentes/Ambage.astro';
     }
   }
 
-  .galeriaAmbages {
-    width: 80vw;
-    text-align: center;
+  .transparencia {
+    background: url(https://static.vecteezy.com/system/resources/previews/000/530/877/original/vector-abstract-seamless-pattern-geometric-form-watercolor-background.jpg) -0.1em -0.8em
+      repeat;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    display: block;
+    margin: 0.1em;
   }
 </style>
